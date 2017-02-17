@@ -10,12 +10,7 @@
 
 namespace SE\Component\BMEcat\Node;
 
-use \JMS\Serializer\Annotation as Serializer;
-
-use \SE\Component\BMEcat\Node\AbstractNode;
-use \SE\Component\BMEcat\Node\ArticleDetailsNode;
-use \SE\Component\BMEcat\Node\ArticleFeaturesNode;
-use \SE\Component\BMEcat\Node\ArticlePriceNode;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  *
@@ -42,7 +37,7 @@ class ArticleNode extends AbstractNode
      * @Serializer\SerializedName("ARTICLE_DETAILS")
      * @Serializer\Type("SE\Component\BMEcat\Node\ArticleDetailsNode")
      *
-     * @var \SE\Component\BMEcat\Node\ArticleDetailsNode
+     * @var ArticleDetailsNode
      */
     protected $detail;
 
@@ -53,7 +48,7 @@ class ArticleNode extends AbstractNode
      * @Serializer\Type("array<SE\Component\BMEcat\Node\ArticlePriceNode>")
      * @Serializer\XmlList( entry="ARTICLE_PRICE")
      *
-     * @var \SE\Component\BMEcat\Node\ArticlePriceNode[]
+     * @var ArticlePriceNode[]
      */
     protected $prices = [];
 
@@ -64,13 +59,13 @@ class ArticleNode extends AbstractNode
      * @Serializer\Type("array<SE\Component\BMEcat\Node\ArticleFeatureNode>")
      * @Serializer\XmlList( entry="FEATURE")
      *
-     * @var \SE\Component\BMEcat\Node\ArticleFeatureNode[]
+     * @var ArticleFeatureNode[]
      */
     protected $features = [];
 
     /**
      *
-     * @param \SE\Component\BMEcat\Node\ArticleDetailsNode $detail
+     * @param ArticleDetailsNode $detail
      */
     public function setDetails(ArticleDetailsNode $detail)
     {
@@ -79,7 +74,7 @@ class ArticleNode extends AbstractNode
 
     /**
      *
-     * @return \SE\Component\BMEcat\Node\ArticleDetailsNode
+     * @return ArticleDetailsNode
      */
     public function getDetails()
     {
@@ -88,7 +83,7 @@ class ArticleNode extends AbstractNode
 
     /**
      *
-     * @param \SE\Component\BMEcat\Node\ArticleFeatureNode $feature
+     * @param ArticleFeatureNode $feature
      */
     public function addFeature(ArticleFeatureNode $feature)
     {
@@ -100,7 +95,7 @@ class ArticleNode extends AbstractNode
 
     /**
      *
-     * @param \SE\Component\BMEcat\Node\ArticlePriceNode $price
+     * @param ArticlePriceNode $price
      */
     public function addPrice(ArticlePriceNode $price)
     {
@@ -154,7 +149,7 @@ class ArticleNode extends AbstractNode
 
     /**
      *
-     * @return \SE\Component\BMEcat\Node\ArticleFeatureNode[]
+     * @return ArticleFeatureNode[]
      */
     public function getFeatures()
     {
@@ -167,7 +162,7 @@ class ArticleNode extends AbstractNode
 
     /**
      *
-     * @return \SE\Component\BMEcat\Node\ArticlePriceNode[]
+     * @return ArticlePriceNode[]
      */
     public function getPrices()
     {

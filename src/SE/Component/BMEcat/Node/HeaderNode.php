@@ -10,11 +10,7 @@
 
 namespace SE\Component\BMEcat\Node;
 
-use \JMS\Serializer\Annotation as Serializer;
-
-use \SE\Component\BMEcat\Node\AbstractNode;
-use \SE\Component\BMEcat\Node\CatalogNode;
-use \SE\Component\BMEcat\Node\SupplierNode;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  *
@@ -57,12 +53,13 @@ class HeaderNode extends AbstractNode
      * @Serializer\Type("SE\Component\BMEcat\Node\CatalogNode")
      * @Serializer\SerializedName("CATALOG")
      *
-     * @var \SE\Component\BMEcat\Node\CatalogNode
+     * @var CatalogNode
      */
     protected $catalog;
 
     /**
-     * @param \SE\Component\BMEcat\Node\CatalogNode $catalog
+     * @param CatalogNode $catalog
+     *
      * @return void
      */
     public function setCatalog(CatalogNode $catalog)
@@ -71,7 +68,7 @@ class HeaderNode extends AbstractNode
     }
 
     /**
-     * @return \SE\Component\BMEcat\Node\CatalogNode $catalog
+     * @return CatalogNode $catalog
      */
     public function getCatalog()
     {
@@ -83,12 +80,13 @@ class HeaderNode extends AbstractNode
      * @Serializer\Type("SE\Component\BMEcat\Node\SupplierNode")
      * @Serializer\SerializedName("SUPPLIER")
      *
-     * @var \SE\Component\BMEcat\Node\SupplierNode
+     * @var SupplierNode
      */
     protected $supplier;
 
     /**
-     * @param \SE\Component\BMEcat\Node\SupplierNode $supplier
+     * @param SupplierNode $supplier
+     *
      * @return void
      */
     public function setSupplier(SupplierNode $supplier)
@@ -97,12 +95,10 @@ class HeaderNode extends AbstractNode
     }
 
     /**
-     * @return \SE\Component\BMEcat\Node\SupplierNode
+     * @return SupplierNode
      */
     public function getSupplier()
     {
         return $this->supplier;
     }
-
-
 }

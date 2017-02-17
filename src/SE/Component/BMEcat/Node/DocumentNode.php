@@ -10,10 +10,7 @@
 
 namespace SE\Component\BMEcat\Node;
 
-use \JMS\Serializer\Annotation as Serializer;
-
-use \SE\Component\BMEcat\Node\AbstractNode;
-use \SE\Component\BMEcat\Node\HeaderNode;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  *
@@ -57,7 +54,7 @@ class DocumentNode extends AbstractNode
      * @Serializer\Type("SE\Component\BMEcat\Node\HeaderNode")
      * @Serializer\SerializedName("HEADER")
      *
-     * @var \SE\Component\BMEcat\Node\HeaderNode
+     * @var HeaderNode
      */
     protected $header;
 
@@ -66,7 +63,7 @@ class DocumentNode extends AbstractNode
      * @Serializer\Type("SE\Component\BMEcat\Node\NewCatalogNode")
      * @Serializer\SerializedName("T_NEW_CATALOG")
      *
-     * @var \SE\Component\BMEcat\Node\NewCatalogNode
+     * @var NewCatalogNode
      */
     protected $catalog;
 
@@ -89,7 +86,8 @@ class DocumentNode extends AbstractNode
     }
 
     /**
-     * @param \SE\Component\BMEcat\Node\HeaderNode $header
+     * @param HeaderNode $header
+     *
      * @return void
      */
     public function setHeader(HeaderNode $header)
@@ -99,7 +97,7 @@ class DocumentNode extends AbstractNode
 
     /**
      *
-     * @return \SE\Component\BMEcat\Node\HeaderNode
+     * @return HeaderNode
      */
     public function getHeader()
     {
@@ -107,7 +105,8 @@ class DocumentNode extends AbstractNode
     }
 
     /**
-     * @param \SE\Component\BMEcat\Node\NewCatalogNode $catalog
+     * @param NewCatalogNode $catalog
+     *
      * @return void
      */
     public function setNewCatalog(NewCatalogNode $catalog)
@@ -116,7 +115,7 @@ class DocumentNode extends AbstractNode
     }
 
     /**
-     * @return \SE\Component\BMEcat\Node\NewCatalogNode
+     * @return NewCatalogNode
      */
     public function getNewCatalog()
     {

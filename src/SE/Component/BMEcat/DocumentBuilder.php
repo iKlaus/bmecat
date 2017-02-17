@@ -10,14 +10,12 @@
 
 namespace SE\Component\BMEcat;
 
-use \JMS\Serializer\Serializer;
-use \JMS\Serializer\SerializerBuilder;
-use \JMS\Serializer\SerializationContext;
+use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializationContext;
 
-use \SE\Component\BMEcat\DataLoader;
-use \SE\Component\BMEcat\NodeLoader;
-use \SE\Component\BMEcat\Node\DocumentNode;
-use \SE\Component\BMEcat\Exception\MissingDocumentException;
+use SE\Component\BMEcat\Node\DocumentNode;
+use SE\Component\BMEcat\Exception\MissingDocumentException;
 
 /**
  *
@@ -28,32 +26,32 @@ class DocumentBuilder
 {
     /**
      *
-     * @var \JMS\Serializer\Serializer
+     * @var Serializer
      */
     protected $serializer;
 
     /**
      *
-     * @var \JMS\Serializer\SerializationContext
+     * @var SerializationContext
      */
     protected $context;
 
     /**
      *
-     * @var \SE\Component\BMEcat\NodeLoader
+     * @var NodeLoader
      */
     protected $loader;
 
     /**
      *
-     * @var \SE\Component\BMEcat\Node\DocumentNode
+     * @var DocumentNode
      */
     protected $document;
 
     /**
      *
-     * @param \JMS\Serializer\Serializer $serializer
-     * @param \SE\Component\BMEcat\NodeLoader $loader
+     * @param Serializer $serializer
+     * @param NodeLoader $loader
      */
     public function __construct(Serializer $serializer = null, NodeLoader $loader = null, $context = null)
     {
@@ -77,9 +75,10 @@ class DocumentBuilder
 
     /**
      *
-     * @param \JMS\Serializer\Serializer $serializer
-     * @param \SE\Component\BMEcat\NodeLoader $loader
-     * @return \SE\Component\BMEcat\DocumentBuilder
+     * @param Serializer $serializer
+     * @param NodeLoader $loader
+     *
+     * @return DocumentBuilder
      */
     public static function create(Serializer $serializer = null, NodeLoader $loader = null)
     {
@@ -88,7 +87,7 @@ class DocumentBuilder
 
     /**
      *
-     * @return \SE\Component\BMEcat\NodeLoader
+     * @return NodeLoader
      */
     public function getLoader()
     {
@@ -97,7 +96,7 @@ class DocumentBuilder
 
     /**
      *
-     * @return \JMS\Serializer\Serializer
+     * @return Serializer
      */
     public function getSerializer()
     {
@@ -106,7 +105,7 @@ class DocumentBuilder
 
     /**
      *
-     * @return \JMS\Serializer\SerializationContext
+     * @return SerializationContext
      */
     public function getContext()
     {
@@ -115,8 +114,9 @@ class DocumentBuilder
 
     /**
      *
-     * @param Node\DocumentNode $document
-     * @return \SE\Component\BMEcat\NodeLoader
+     * @param DocumentNode $document
+     *
+*@return NodeLoader
      */
     public function setDocument(DocumentNode $document)
     {
@@ -125,7 +125,7 @@ class DocumentBuilder
 
     /**
      *
-     * @return \SE\Component\BMEcat\Node\DocumentNode
+     * @return DocumentNode
      */
     public function getDocument()
     {
@@ -135,7 +135,7 @@ class DocumentBuilder
     /**
      * Builds the BMEcat document tree
      *
-     * @return \SE\Component\BMEcat\Node\DocumentNode
+     * @return DocumentNode
      */
     public function build()
     {
@@ -192,7 +192,7 @@ class DocumentBuilder
     
     /**
      *
-     * @throws \SE\Component\BMEcat\Exception\MissingDocumentException
+     * @throws MissingDocumentException
      * @return string
      */
     public function toString()

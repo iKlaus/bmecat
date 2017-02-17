@@ -10,9 +10,7 @@
 
 namespace SE\Component\BMEcat\Node;
 
-use \JMS\Serializer\Annotation as Serializer;
-
-use \SE\Component\BMEcat\Node\AbstractNode;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  *
@@ -147,6 +145,4 @@ class ArticleDetailsNode extends AbstractNode
     {
         return $this->segment;
     }
-
-
 }

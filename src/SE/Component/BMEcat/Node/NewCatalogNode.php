@@ -10,10 +10,7 @@
 
 namespace SE\Component\BMEcat\Node;
 
-use \JMS\Serializer\Annotation as Serializer;
-
-use \SE\Component\BMEcat\Node\AbstractNode;
-use \SE\Component\BMEcat\Node\ArticleNode;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  *
@@ -30,7 +27,7 @@ class NewCatalogNode extends AbstractNode
 
     /**
      *
-     * @param \SE\Component\BMEcat\Node\ArticleNode $article
+     * @param ArticleNode $article
      */
     public function addArticle(ArticleNode $article)
     {
@@ -54,7 +51,7 @@ class NewCatalogNode extends AbstractNode
 
     /**
      *
-     * @return \SE\Component\BMEcat\Node\ArticleNode[]
+     * @return ArticleNode[]
      */
     public function getArticles()
     {
@@ -64,6 +61,4 @@ class NewCatalogNode extends AbstractNode
 
         return $this->articles;
     }
-
-
 }

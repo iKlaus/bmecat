@@ -10,10 +10,7 @@
 
 namespace SE\Component\BMEcat\Node;
 
-use \JMS\Serializer\Annotation as Serializer;
-
-use \SE\Component\BMEcat\Node\AbstractNode;
-use \SE\Component\BMEcat\Node\DateTimeNode;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  *
@@ -117,7 +114,7 @@ class CatalogNode extends AbstractNode
 
     /**
      *
-     * @param \SE\Component\BMEcat\Node\DateTimeNode $dateTime
+     * @param DateTimeNode $dateTime
      */
     public function setDateTime(DateTimeNode $dateTime)
     {
@@ -126,7 +123,7 @@ class CatalogNode extends AbstractNode
 
     /**
      *
-     * @return \SE\Component\BMEcat\Node\DateTimeNode
+     * @return DateTimeNode
      */
     public function getDateTime()
     {

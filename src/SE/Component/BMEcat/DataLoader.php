@@ -10,13 +10,11 @@
 
 namespace SE\Component\BMEcat;
 
-use \SE\Component\BMEcat\DocumentBuilder;
-use \SE\Component\BMEcat\Node\AbstractNode;
-use \SE\Component\BMEcat\Node\DocumentNode;
-use \SE\Component\BMEcat\Node\HeaderNode;
-use \SE\Component\BMEcat\Node\CatalogNode;
-use \SE\Component\BMEcat\Node\DateTimeNode;
-use \SE\Component\BMEcat\Exception\UnknownKeyException;
+use SE\Component\BMEcat\Node\AbstractNode;
+use SE\Component\BMEcat\Node\DocumentNode;
+use SE\Component\BMEcat\Node\HeaderNode;
+use SE\Component\BMEcat\Node\CatalogNode;
+use SE\Component\BMEcat\Exception\UnknownKeyException;
 
 /**
  *
@@ -27,7 +25,7 @@ class DataLoader
 {
     /**
      * @param array $data
-     * @param \SE\Component\BMEcat\DocumentBuilder $builder
+     * @param DocumentBuilder $builder
      * @throws Exception\UnknownKeyException
      */
     public static function load(array $data, DocumentBuilder $builder)
@@ -67,9 +65,10 @@ class DataLoader
 
     /**
      *
-     * @param array $data
-     * @param \SE\Component\BMEcat\Node\DocumentNode $document
-     * @throws \SE\Component\BMEcat\Exception\UnknownKeyException
+     * @param array        $data
+     * @param DocumentNode $document
+     *
+     * @throws UnknownKeyException
      */
     public static function loadDocument(array $data, DocumentNode $document)
     {
@@ -93,9 +92,10 @@ class DataLoader
     }
 
     /**
-     * @param array $data
-     * @param \SE\Component\BMEcat\Node\HeaderNode $header
-     * @throws \SE\Component\BMEcat\Exception\UnknownKeyException
+     * @param array      $data
+     * @param HeaderNode $header
+     *
+     * @throws UnknownKeyException
      */
     public static function loadHeader(array $data, HeaderNode $header)
     {
@@ -126,9 +126,10 @@ class DataLoader
 
     /**
      *
-     * @param array $data
-     * @param \SE\Component\BMEcat\Node\CatalogNode $catalog
-     * @throws \SE\Component\BMEcat\Exception\UnknownKeyException
+     * @param array       $data
+     * @param CatalogNode $catalog
+     *
+     * @throws UnknownKeyException
      */
     public static function loadCatalog(array $data, CatalogNode $catalog)
     {
@@ -152,8 +153,8 @@ class DataLoader
     }
 
     /**
-     * @param array $data
-     * @param \SE\Component\BMEcat\Node\AbstractNode $node
+     * @param array        $data
+     * @param AbstractNode $node
      */
     public static function loadArrayData(array $data, AbstractNode $node)
     {
@@ -163,9 +164,9 @@ class DataLoader
     }
 
     /**
-     * @param string $key
-     * @param mixed $value
-     * @param \SE\Component\BMEcat\Node\AbstractNode $node
+     * @param string       $key
+     * @param mixed        $value
+     * @param AbstractNode $node
      */
     public static function loadScalarData($key, $value, AbstractNode $node)
     {

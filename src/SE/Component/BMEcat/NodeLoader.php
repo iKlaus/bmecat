@@ -10,8 +10,9 @@
 
 namespace SE\Component\BMEcat;
 
-use \SE\Component\BMEcat\Exception\UnknownNodeException;
-use \SE\Component\BMEcat\Exception\UnknownNodeTypeException;
+use SE\Component\BMEcat\Exception\UnknownNodeException;
+use SE\Component\BMEcat\Exception\UnknownNodeTypeException;
+use SE\Component\BMEcat\Node\AbstractNode;
 
 /**
  *
@@ -57,8 +58,8 @@ class NodeLoader
     /**
      *
      * @param string $nodeName
-     * @throws \SE\Component\BMEcat\Exception\UnknownNodeException
-     * @return \SE\Component\BMEcat\Node\AbstractNode
+     * @throws UnknownNodeException
+     * @return AbstractNode
      */
     public function getInstance($nodeName)
     {
@@ -77,7 +78,8 @@ class NodeLoader
      *
      * @param string $nodeName
      * @param string $class
-     * @throws \SE\Component\BMEcat\Exception\UnknownNodeTypeException
+     *
+     * @throws UnknownNodeTypeException
      */
     public function set($nodeName, $class)
     {
@@ -91,7 +93,8 @@ class NodeLoader
     /**
      *
      * @param string $nodeName
-     * @throws \SE\Component\BMEcat\Exception\UnknownNodeTypeException
+     *
+     * @throws UnknownNodeTypeException
      * @return $class
      */
     public function get($nodeName)
