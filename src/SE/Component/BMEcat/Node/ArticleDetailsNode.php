@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  *
  * @package SE\Component\BMEcat
- * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ * @author  Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
  *
  * @Serializer\XmlRoot("ARTICLE_DETAILS")
  */
@@ -144,5 +144,15 @@ class ArticleDetailsNode extends AbstractNode
     public function getSegment()
     {
         return $this->segment;
+    }
+
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+    }
+
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }

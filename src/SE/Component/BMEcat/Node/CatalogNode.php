@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  *
  * @package SE\Component\BMEcat
- * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ * @author  Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
  *
  * @Serializer\XmlRoot("CATALOG")
  */
@@ -23,21 +23,21 @@ class CatalogNode extends AbstractNode
 {
 
     /**
-      * @Serializer\Expose
-      * @Serializer\Type("string")
-      * @Serializer\SerializedName("CATALOG_ID")
-      *
-      * @var string
-      */
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CATALOG_ID")
+     *
+     * @var string
+     */
     protected $id;
 
     /**
-      * @Serializer\Expose
-      * @Serializer\Type("string")
-      * @Serializer\SerializedName("CATALOG_VERSION")
-      *
-      * @var string
-      */
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CATALOG_VERSION")
+     *
+     * @var string
+     */
     protected $version;
 
     /**
@@ -54,12 +54,31 @@ class CatalogNode extends AbstractNode
      * @Serializer\Type("SE\Component\BMEcat\Node\DateTimeNode")
      * @Serializer\SerializedName("DATETIME")
      *
-     * @var string
+     * @var DateTimeNode
      */
     protected $dateTime;
 
     /**
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CATALOG_NAME")
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CURRENCY")
+     *
+     * @var string
+     */
+    protected $currency;
+
+    /**
      * @param string $language
+     *
      * @return void
      */
     public function setLanguage($language)
@@ -69,6 +88,7 @@ class CatalogNode extends AbstractNode
 
     /**
      * @param string $id
+     *
      * @return void
      */
     public function setId($id)
@@ -78,6 +98,7 @@ class CatalogNode extends AbstractNode
 
     /**
      * @param string $version
+     *
      * @return void
      */
     public function setVersion($version)
@@ -130,4 +151,35 @@ class CatalogNode extends AbstractNode
         return $this->dateTime;
     }
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string $currency
+     */
+    public function setCurrency(string $currency)
+    {
+        $this->currency = $currency;
+    }
 }

@@ -49,7 +49,6 @@ class DocumentBuilder
     protected $document;
 
     /**
-     *
      * @param Serializer $serializer
      * @param NodeLoader $loader
      */

@@ -19,40 +19,41 @@ use SE\Component\BMEcat\Exception\UnknownKeyException;
 /**
  *
  * @package SE\Component\BMEcat
- * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ * @author  Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
  */
 class DataLoader
 {
     /**
-     * @param array $data
+     * @param array           $data
      * @param DocumentBuilder $builder
+     *
      * @throws Exception\UnknownKeyException
      */
     public static function load(array $data, DocumentBuilder $builder)
     {
 
-        if(isset($data['loader']) === true) {
-            foreach($data['loader'] as $nodeName => $class) {
+        if (isset($data['loader']) === true) {
+            foreach ($data['loader'] as $nodeName => $class) {
                 $builder->getLoader()->set($nodeName, $class);
             }
         }
 
-        if(($document = $builder->getDocument()) === null) {
+        if (($document = $builder->getDocument()) === null) {
             $document = $builder->build();
         }
 
-        foreach($data as $key => $value) {
-            switch(strtolower($key)) {
+        foreach ($data as $key => $value) {
+            switch (strtolower($key)) {
 
                 case 'nullable':
-                    if(is_bool($value) === true) {
+                    if (is_bool($value) === true) {
                         $builder->setSerializeNull($value);
                     }
                     break;
 
                 case 'document':
                     self::loadDocument($value, $document);
-                break;
+                    break;
 
                 case 'loader':
                     continue;
@@ -72,11 +73,11 @@ class DataLoader
      */
     public static function loadDocument(array $data, DocumentNode $document)
     {
-        foreach($data as $key => $value) {
-            switch(strtolower($key)) {
+        foreach ($data as $key => $value) {
+            switch (strtolower($key)) {
 
                 case 'header':
-                    if($document->getHeader() !== null) {
+                    if ($document->getHeader() !== null) {
                         self::loadHeader($value, $document->getHeader());
                     }
                     break;
@@ -99,21 +100,21 @@ class DataLoader
      */
     public static function loadHeader(array $data, HeaderNode $header)
     {
-        foreach($data as $key => $value) {
-            switch(strtolower($key)) {
+        foreach ($data as $key => $value) {
+            switch (strtolower($key)) {
 
                 case 'generator_info':
                     self::loadScalarData($key, $value, $header);
                     break;
 
                 case 'catalog':
-                    if($header->getCatalog() !== null) {
+                    if ($header->getCatalog() !== null) {
                         self::loadCatalog($value, $header->getCatalog());
                     }
                     break;
 
                 case 'supplier':
-                    if($header->getSupplier() !== null) {
+                    if ($header->getSupplier() !== null) {
                         self::loadArrayData($value, $header->getSupplier());
                     }
                     break;
@@ -133,12 +134,13 @@ class DataLoader
      */
     public static function loadCatalog(array $data, CatalogNode $catalog)
     {
-        foreach($data as $key => $value) {
-            switch(strtolower($key)) {
+        foreach ($data as $key => $value) {
+            switch (strtolower($key)) {
 
                 case 'id':
                 case 'version':
                 case 'language':
+                case 'currency':
                     self::loadScalarData($key, $value, $catalog);
                     break;
 
@@ -147,7 +149,7 @@ class DataLoader
                     break;
 
                 default:
-                    throw new UnknownKeyException(sprintf('Unknown key header.%s to load', $key));
+                    throw new UnknownKeyException(sprintf('Unknown key catalog.%s to load', $key));
             }
         }
     }
@@ -158,7 +160,7 @@ class DataLoader
      */
     public static function loadArrayData(array $data, AbstractNode $node)
     {
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             self::loadScalarData($key, $value, $node);
         }
     }
@@ -170,20 +172,23 @@ class DataLoader
      */
     public static function loadScalarData($key, $value, AbstractNode $node)
     {
-        $method = 'set'.self::formatAttribute($key);
+        $method = 'set' . self::formatAttribute($key);
         $node->{$method}($value);
     }
 
     /**
      * @param string $attribute
+     *
      * @return string
      */
     public static function formatAttribute($attribute)
     {
         return \preg_replace_callback(
-            '/(^|_|\.)+(.)/', function ($match) {
-                return ('.' === $match[1] ? '_' : '').strtoupper($match[2]);
-            }, $attribute
+            '/(^|_|\.)+(.)/',
+            function ($match) {
+                return ('.' === $match[1] ? '_' : '') . strtoupper($match[2]);
+            },
+            $attribute
         );
     }
 }
