@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  *
  * @package SE\Component\BMEcat
- * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ * @author  Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
  *
  * @Serializer\XmlRoot("ARTICLE_PRICE")
  */
@@ -27,7 +27,7 @@ class ArticlePriceNode extends AbstractNode
      * @Serializer\SerializedName("price_type")
      * @Serializer\XmlAttribute
      *
-     * @var float
+     * @var string
      */
     protected $type = 'gros_list';
 
@@ -110,5 +110,21 @@ class ArticlePriceNode extends AbstractNode
     public function getSupplierPrice()
     {
         return $this->supplierPrice;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }
