@@ -37,13 +37,6 @@ class DocumentNode extends AbstractNode
 
     /**
      * @Serializer\Expose
-     * @Serializer\SerializedName("xmlns:xsi")
-     * @Serializer\XmlAttribute
-     */
-    protected $nullableNamespace = 'http://www.w3.org/2001/XMLSchema-instance';
-
-    /**
-     * @Serializer\Expose
      * @Serializer\SerializedName("xsi:noNamespaceSchemaLocation")
      * @Serializer\XmlAttribute
      */
