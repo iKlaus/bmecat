@@ -145,14 +145,4 @@ class ArticleDetailsNode extends AbstractNode
     {
         return $this->segment;
     }
-
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-    }
-
-    public function getWeight()
-    {
-        return $this->weight;
-    }
 }
