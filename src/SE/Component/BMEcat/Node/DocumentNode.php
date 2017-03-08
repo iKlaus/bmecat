@@ -32,13 +32,26 @@ class DocumentNode extends AbstractNode
      * @Serializer\Expose
      * @Serializer\SerializedName("xmlns")
      * @Serializer\XmlAttribute
+     *
+     * @var string
      */
     protected $namespace = 'http://www.bmecat.org/bmecat/1.2/bmecat_new_catalog';
 
     /**
      * @Serializer\Expose
+     * @Serializer\SerializedName("xmlns:xsi")
+     * @Serializer\XmlAttribute
+     *
+     * @var string
+     */
+    protected $nullableNamespace = 'http://www.w3.org/2001/XMLSchema-instance';
+
+    /**
+     * @Serializer\Expose
      * @Serializer\SerializedName("xsi:noNamespaceSchemaLocation")
      * @Serializer\XmlAttribute
+     *
+     * @var string
      */
     protected $nullableLocation = 'http://www.w3.org/1999/xhtml.xsd';
 
@@ -113,5 +126,53 @@ class DocumentNode extends AbstractNode
     public function getNewCatalog()
     {
         return $this->catalog;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNamespace()
+    {
+        return $this->namespace;
+    }
+
+    /**
+     * @param string $namespace
+     */
+    public function setNamespace($namespace)
+    {
+        $this->namespace = $namespace;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNullableNamespace()
+    {
+        return $this->nullableNamespace;
+    }
+
+    /**
+     * @param string $nullableNamespace
+     */
+    public function setNullableNamespace($nullableNamespace)
+    {
+        $this->nullableNamespace = $nullableNamespace;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNullableLocation()
+    {
+        return $this->nullableLocation;
+    }
+
+    /**
+     * @param string $nullableLocation
+     */
+    public function setNullableLocation($nullableLocation)
+    {
+        $this->nullableLocation = $nullableLocation;
     }
 }
