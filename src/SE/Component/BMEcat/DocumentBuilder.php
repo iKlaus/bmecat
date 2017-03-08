@@ -20,30 +20,26 @@ use SE\Component\BMEcat\Exception\MissingDocumentException;
 /**
  *
  * @package SE\Component\BMEcat
- * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ * @author  Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
  */
 class DocumentBuilder
 {
     /**
-     *
      * @var Serializer
      */
     protected $serializer;
 
     /**
-     *
      * @var SerializationContext
      */
     protected $context;
 
     /**
-     *
      * @var NodeLoader
      */
     protected $loader;
 
     /**
-     *
      * @var DocumentNode
      */
     protected $document;
@@ -54,26 +50,24 @@ class DocumentBuilder
      */
     public function __construct(Serializer $serializer = null, NodeLoader $loader = null, $context = null)
     {
-        if($serializer === null) {
+        if ($serializer === null) {
             $serializer = SerializerBuilder::create()->build();
         }
 
-        if($context === null) {
+        if ($context === null) {
             $context = SerializationContext::create();
         }
 
-
-        if($loader === null) {
+        if ($loader === null) {
             $loader = new NodeLoader();
         }
 
-        $this->context    = $context;
+        $this->context = $context;
         $this->serializer = $serializer;
-        $this->loader     = $loader;
+        $this->loader = $loader;
     }
 
     /**
-     *
      * @param Serializer $serializer
      * @param NodeLoader $loader
      *
@@ -85,7 +79,6 @@ class DocumentBuilder
     }
 
     /**
-     *
      * @return NodeLoader
      */
     public function getLoader()
@@ -94,7 +87,6 @@ class DocumentBuilder
     }
 
     /**
-     *
      * @return Serializer
      */
     public function getSerializer()
@@ -103,7 +95,6 @@ class DocumentBuilder
     }
 
     /**
-     *
      * @return SerializationContext
      */
     public function getContext()
@@ -115,7 +106,7 @@ class DocumentBuilder
      *
      * @param DocumentNode $document
      *
-*@return NodeLoader
+     * @return NodeLoader
      */
     public function setDocument(DocumentNode $document)
     {
@@ -123,7 +114,6 @@ class DocumentBuilder
     }
 
     /**
-     *
      * @return DocumentNode
      */
     public function getDocument()
@@ -138,32 +128,32 @@ class DocumentBuilder
      */
     public function build()
     {
-        if(($document = $this->getDocument()) === null) {
+        if (($document = $this->getDocument()) === null) {
             $document = $this->loader->getInstance(NodeLoader::DOCUMENT_NODE);
             $this->setDocument($document);
         }
 
-        if(($header = $document->getHeader()) === null) {
+        if (($header = $document->getHeader()) === null) {
             $header = $this->loader->getInstance(NodeLoader::HEADER_NODE);
             $document->setHeader($header);
         }
 
-        if(($supplier = $header->getSupplier()) === null) {
+        if (($supplier = $header->getSupplier()) === null) {
             $supplier = $this->loader->getInstance(NodeLoader::SUPPLIER_NODE);
             $header->setSupplier($supplier);
         }
 
-        if(($catalog = $header->getCatalog()) === null) {
+        if (($catalog = $header->getCatalog()) === null) {
             $catalog = $this->loader->getInstance(NodeLoader::CATALOG_NODE);
             $header->setCatalog($catalog);
         }
 
-        if(($datetime = $catalog->getDateTime()) === null) {
+        if (($datetime = $catalog->getDateTime()) === null) {
             $datetime = $this->loader->getInstance(NodeLoader::DATE_TIME_NODE);
             $catalog->setDateTime($datetime);
         }
 
-        if(($newCatalog = $document->getNewCatalog()) === null) {
+        if (($newCatalog = $document->getNewCatalog()) === null) {
             $newCatalog = $this->loader->getInstance(NodeLoader::NEW_CATALOG_NODE);
             $document->setNewCatalog($newCatalog);
         }
@@ -188,7 +178,19 @@ class DocumentBuilder
     {
         $this->context->setSerializeNull($bool);
     }
-    
+
+    /**
+     * Returns a clone of the configured SerializationContext so always a fresh,
+     * uninitialized object is used. This allows for multiple runs in a single
+     * program execution as SerializationContexts cannot be reused.
+     *
+     * @return SerializationContext|null
+     */
+    private function getSerializationContext()
+    {
+        return clone $this->context;
+    }
+
     /**
      *
      * @throws MissingDocumentException
@@ -196,10 +198,10 @@ class DocumentBuilder
      */
     public function toString()
     {
-        if(($document = $this->getDocument()) === null) {
+        if (($document = $this->getDocument()) === null) {
             throw new MissingDocumentException('No Document built. Please call ::build first.');
         }
 
-        return $this->serializer->serialize($document, 'xml', $this->context);
+        return $this->serializer->serialize($document, 'xml', $this->getSerializationContext());
     }
 }
