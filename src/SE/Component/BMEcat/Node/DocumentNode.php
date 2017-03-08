@@ -15,9 +15,9 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  *
  * @package SE\Component\BMEcat
- * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ * @author  Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
  *
- * @Serializer\XmlRoot("BMEcat")
+ * @Serializer\XmlRoot("BMECAT")
  * @Serializer\ExclusionPolicy("all")
  */
 class DocumentNode extends AbstractNode
