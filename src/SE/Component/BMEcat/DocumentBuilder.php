@@ -45,6 +45,11 @@ class DocumentBuilder
     protected $document;
 
     /**
+     * @var array
+     */
+    protected $initialData;
+
+    /**
      * @param Serializer $serializer
      * @param NodeLoader $loader
      */
@@ -165,8 +170,18 @@ class DocumentBuilder
      *
      * @param array $data
      */
-    public function load(array $data)
+    public function load(array $data = null)
     {
+        // reset document
+        $this->document = null;
+
+        if ($data) {
+            $this->initialData = $data;
+        }
+        else {
+            $data = $this->initialData;
+        }
+
         DataLoader::load($data, $this);
     }
 
